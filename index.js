@@ -1,5 +1,5 @@
 var inquirer = require("inquirer");
-//var Word = require("./Word.js");
+var Word = require("./Word.js");
 
 //Good Movies
 var words = ["Jurassic Park", "Eternal Sunshine of the Spotless Mind", "Mr. Nobody", "The Matrix", "Windstruck",
@@ -103,62 +103,3 @@ function again() {
     });
 };
 
-function Word(word) {
-    var objWord = word.split("");
-    var wordArray = [];
-    objWord.forEach(function(element) {
-        var letter = new Letter(element);
-        wordArray.push(letter);
-    });
-
-    this.stringWord = word;
-    this.word = wordArray;
-
-    this.display = function() {
-        var display = [];
-        this.word.forEach(function(element) {
-            display.push(element.guessed());
-        })
-        return ("\n" + display.join(" ") + "\n");
-    }
-
-    this.update = function(letter) {
-        var correct = false;
-        this.word.forEach(function(element) {
-            if (element.checking(letter)) {
-                correct = true;
-            }
-            return correct;
-        });
-    };
-}
-
-function Letter(letter) {
-    this.letter = letter;
-
-    var test = this.letter.toUpperCase();
-    test = test.charCodeAt();
-
-    if (test >= 65 && test <= 90) {
-        this.guessCheck = false;
-    } else {
-        this.guessCheck = true;
-    }
-
-    this.guessed = function() {
-        if (!this.guessCheck) {
-            return "_";
-        } else {
-            return this.letter;
-        }
-    };
-
-    this.checking = function(guess) {
-        if (guess === this.letter.toUpperCase()) {
-            this.guessCheck = true;
-            return true;
-        } else {
-            return false;
-        }
-    }
-};
