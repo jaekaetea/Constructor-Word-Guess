@@ -1,13 +1,16 @@
 var inquirer = require("inquirer");
 var Word = require("./Word.js");
 
-//Good Movies
-var words = ["Jurassic Park", "Eternal Sunshine of the Spotless Mind", "Mr. Nobody", "The Matrix", "Windstruck",
-"My Sassy Girl", "Harry Potter", "Lord of the Rings"];
+//Good Animated Films/ Animes
+var words = ["Finding Nemo", "The Incredibles", "Wall-E", "Frozen", "Toy Story", "Shrek", 
+"Spirited Away", "One Punch Man", "Full Metal Alchemist", "Cowboy Bebop", "Naruto",
+"Psycho-Pass", "Bleach", "Death Note", "JoJo's Bizarre Adventure"];
 
-var green = "\x1b[47m";
+var green = "\x1b[32m";
 var red = "\x1b[31m";
 var white = "\x1b[37m";
+var magenta = "\x1b[35m";
+var cyan = "\x1b[36m";
 //console.log("\x1b[32m", "?", "\x1b[37m", "Guess a letter!");
 
 var guessedLetters = [];
@@ -25,7 +28,8 @@ function start() {
     game();
 }
 
-console.log("Welcome to Constructor Word Guess \n\n");
+console.log(cyan, "\n\nWelcome to Constructor Word Guess!", white);
+console.log(magenta, "Featuring Animes and Animated Films\n\n", white);
 start();
 
 function game() {
@@ -66,10 +70,10 @@ function game() {
 
             if (previous === now) {
                 guesses--;
-                console.log("\nINCORRECT!!!");
-                console.log("\nGuesses left: " + guesses + ".\n");
+                console.log(red,"\nINCORRECT!!!", white);
+                console.log("\n" + guesses + " guesses remaining!!!\n");
             } else {
-                console.log("\nCORRECT!!!\n");
+                console.log(green, "\nCORRECT!!!\n", white);
             }
         }
 
